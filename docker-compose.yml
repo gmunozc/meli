@@ -1,0 +1,52 @@
+version: '3.2'
+
+services:
+
+  build-front:
+    build:
+      dockerfile: ./client/Dockerfile
+      context: .
+    image: frontend:latest
+    restart: always
+    command: ['npm', 'start']
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./client/src:/srv/src
+      - ./client/package.json:/srv/package.json
+      - ./client/webpack.config.js:/srv/webpack.config.js
+      - ./client/postcss.config.js:/srv/postcss.config.js
+      - ./client/.babelrc:/srv/.babelrc
+      - ./client/tsconfig.json:/srv/tsconfig.json
+      - ./public/app:/srv/dist
+
+  build-backend:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: backend:latest
+    restart: always
+    command: ['tsc', '-w']
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./server/dist:/srv/dist
+      - ./server/src:/srv/src
+      - ./server/tsconfig.json:/srv/tsconfig.json
+
+  backend:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: backend:latest
+    restart: always
+    command: ['nodemon', 'dist/server.js']
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./public:/srv/public
+      - ./server/dist:/srv/dist
+      - ./server/views:/srv/views
+      - ./server/nodemon.json:/srv/nodemon.json

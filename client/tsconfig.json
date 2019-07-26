@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "outDir": "dist/",
+        "sourceMap": true,
+        "incremental": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "allowJs": true,
+        "removeComments": true,
+        "resolveJsonModule": true,
+        "lib": [
+            "es6",
+            "es7",
+            "dom"
+        ],
+        "target": "es5",
+        "jsx": "react",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/@types"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "dist",
+        "scripts",
+        "acceptance-tests",
+        "webpack",
+        "jest"
+    ],
+    "include": [
+        "./src/**/**/**/*.ts",
+        "./src/**/**/**/*.tsx"
+    ]
+}

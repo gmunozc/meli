@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "baseUrl": "src",
+    "sourceMap": true,
+    "inlineSources": true,
+    "outDir": "dist",
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noImplicitThis": false,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "views"
+  ]
+}
