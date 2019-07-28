@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class AppController {
     index(req, res) {
-        res.redirect('/items/');
+        res.render('items/index');
     }
 }
 exports.default = new AppController();

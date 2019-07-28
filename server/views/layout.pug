@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    link(rel='shortcut icon', href='/static/favicon.ico')
+    link(rel='shortcut icon', href='favicon.ico')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     //- Tell the browser to be responsive to screen width
     meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
@@ -19,12 +19,13 @@ html
     block head
   body
     block content
-    .js
-      script(src=`/static/js/vendor/jquery/jquery.min.js`)
-      //- Bootstrap
-      script(src=`/static/js/vendor/bootstrap/bootstrap.js`)
-      script(src=`/static/js/vendor/moment/moment-with-locales.min.js`)
-      script(src=`/static/js/vendor/react/react.min.js`)
-      script(src=`/static/js/vendor/react/react-dom.min.js`)
-      block js
+    footer
+      .js
+        script(src=`/static/js/vendor/jquery/jquery.min.js`)
+        //- Bootstrap
+        script(src=`/static/js/vendor/bootstrap/bootstrap.js`)
+        script(src=`/static/js/vendor/moment/moment-with-locales.min.js`)
+        script(src=`/static/js/vendor/react/react.min.js`)
+        script(src=`/static/js/vendor/react/react-dom.min.js`)
+        block js
 
