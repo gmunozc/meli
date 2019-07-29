@@ -67,7 +67,15 @@ class ItemsDetailView extends React.Component<IPropsType, IStateType> {
                         alt={item.title}
                       />
                       <h5>Descripción del producto</h5>
-                      <p className="text-muted">{item.description}</p>
+                      <p className="text-muted">
+                        {
+                          item.description
+                            ? item.description.split('\n').map((item) =>
+                              <Fragment>{item}<br/></Fragment>
+                            )
+                            : ''
+                        }
+                      </p>
                     </div>
                     <div className="col-12 col-md-4 mt-3">
                       <p className="text-muted">
