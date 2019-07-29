@@ -1,0 +1,27 @@
+@import "../../variables"
+body
+  font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif
+  color: #333333
+  background-color: $backgroud
+
+.pointer
+  cursor: pointer
+
+button
+  &:focus, &.btn:focus
+    box-shadow: none
+    border-color: rgb(206, 212, 218)
+
+textarea
+  &:focus, &.form-control:focus
+    box-shadow: none
+    border-color: rgb(206, 212, 218)
+
+input
+  &.form-control:focus, &[type=text]:focus, &[type=password]:focus, &[type=email]:focus, &[type=number]:focus
+    box-shadow: none
+    border-color: rgb(206, 212, 218)
+
+[type=text].form-control:focus, [type=password].form-control:focus, [type=email].form-control:focus, [type=tel].form-control:focus, [contenteditable].form-control:focus
+  box-shadow: none
+  border-color: rgb(206, 212, 218)

@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import configureStore, {history} from "./store/configureStore";
 import {Route, RouteComponentProps, Switch} from 'react-router-dom';
 import ItemsListView from "./components/items/ItemsListView";
+import ItemsDetailView from "./components/items/ItemsDetailView";
 
 const store = configureStore();
 
@@ -19,15 +20,20 @@ const App = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
+        <Route exact path="/" component={ItemsListView}/>
         <Route exact path="/items" component={ItemsListView}/>
+        <Route exact path="/items/:id" component={ItemsDetailView}/>
         <Route component={NoMatch}/>
       </Switch>
     </ConnectedRouter>
   </Provider>
 );
 
-moment.locale('es');
-ReactDOM.render(
-  <App/>,
-  document.querySelector('#app')
-);
+$(() => {
+  moment.locale('es');
+  ReactDOM.render(
+    <App/>,
+    document.querySelector('#app')
+  );
+});
+

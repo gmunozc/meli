@@ -74,7 +74,8 @@ class ItemsController {
           condition: (jsonItem.condition === 'new') ? 'Nuevo' : 'Usado',
           free_shipping: jsonItem.shipping.free_shipping,
           sold_quantity: jsonItem.sold_quantity,
-          description: jsonDescription.plain_text
+          description: jsonDescription.plain_text,
+          category: jsonItem.category_id
         };
       }
       res.json(data);
