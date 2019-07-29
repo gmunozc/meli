@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {IReduxStore} from "../reducers";
 import ApiService from '../services/api.service';
+import * as NProgress from 'nprogress'
 import Axios, {AxiosError, AxiosResponse, CancelTokenSource} from "axios";
 import {history} from "../store/configureStore";
 import {IItem} from "./items.action";
@@ -70,6 +71,8 @@ export function itemGet(id: string, redirect?:boolean) {
   ) => {
     dispatch(itemLoading(true));
     dispatch(itemCancelRequest(ApiService.getSource()));
+    NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false });
+    NProgress.start();
     ApiService
       .getItem(id)
       .then((response: AxiosResponse) => {
@@ -82,11 +85,13 @@ export function itemGet(id: string, redirect?:boolean) {
         if (redirect) {
           history.push(`/items/${id}`);
         }
+        NProgress.done();
       })
       .catch((err: AxiosError) => {
         if (!Axios.isCancel(err)) {
           ApiService.errorHandler(err);
         }
+        NProgress.done();
         dispatch(itemLoading(false));
       })
   }

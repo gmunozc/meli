@@ -1,4 +1,5 @@
 import {Dispatch} from "redux";
+import * as NProgress from 'nprogress'
 import {IReduxStore} from "../reducers";
 import ApiService from '../services/api.service';
 import Axios, {AxiosError, AxiosResponse, CancelTokenSource} from "axios";
@@ -106,6 +107,8 @@ export function itemsSearch({redirect}: { redirect: boolean }) {
     const state = getState();
     const {searchText} = state.items;
     if (searchText.length) {
+      NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false });
+      NProgress.start();
       document.title = `Mercado Libre | Buscando ${searchText}`;
       dispatch(itemsLoading(true));
       dispatch(itemsCancelRequest(ApiService.getSource()));
@@ -119,12 +122,14 @@ export function itemsSearch({redirect}: { redirect: boolean }) {
             });
           }
           dispatch(itemsLoad(response.data.items, response.data.categories));
+          NProgress.done();
           dispatch(itemsLoading(false));
         })
         .catch((err: AxiosError) => {
           if (!Axios.isCancel(err)) {
             ApiService.errorHandler(err);
           }
+          NProgress.done();
           dispatch(itemsLoading(false));
         })
     }

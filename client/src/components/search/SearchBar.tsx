@@ -76,11 +76,7 @@ class SearchBar extends React.Component<IPropsType, IStateType> {
                 type="button"
                 onClick={() => this._submitSearch(true)}
               >
-                {
-                  loading
-                    ? <i className="fa fa-spin fa-spinner" />
-                    : <i className="fa fa-search" />
-                }
+                <i className="fa fa-search" />
               </button>
             </div>
         </div>
